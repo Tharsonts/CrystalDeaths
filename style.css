@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a12;display:flex;justify-content:center;align-items:center;height:100vh;overflow:hidden;font-family:'Press Start 2P',monospace}
+#game-container{position:relative;width:960px;height:640px;border:2px solid #2a1a4a;box-shadow:0 0 40px rgba(100,50,200,.3),inset 0 0 40px rgba(0,0,0,.5);border-radius:4px}
+canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
+#title-screen,#pause-screen,#death-screen{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(5,2,18,.92);z-index:10}
+#title-screen h1{font-size:32px;color:#b480ff;text-shadow:0 0 20px #7b2fff,0 0 60px #5010aa;margin-bottom:8px;letter-spacing:6px;animation:glow 2s ease-in-out infinite alternate}
+@keyframes glow{from{text-shadow:0 0 20px #7b2fff,0 0 40px #5010aa}to{text-shadow:0 0 30px #a66dff,0 0 80px #7b2fff,0 0 120px #5010aa}}
+.subtitle{color:#6a5a8a;font-size:9px;margin-bottom:20px;letter-spacing:3px}
+#level-select{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0;padding:0 40px}
+.level-card{width:100px;height:70px;background:#0d0828;border:2px solid #2a1a4a;border-radius:4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .2s;position:relative;overflow:hidden}
+.level-card:hover:not(.locked){background:#1a1040;border-color:#6a3aff;box-shadow:0 0 15px rgba(100,50,255,.3)}
+.level-card .lv-num{font-size:16px;color:#8a6acc;margin-bottom:4px}
+.level-card .lv-name{font-size:5px;color:#6a5a8a;text-align:center;letter-spacing:1px;line-height:1.4}
+.level-card.locked{opacity:.4;cursor:default}
+.level-card.locked::after{content:'🔒';position:absolute;font-size:18px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.level-card.locked .lv-num,.level-card.locked .lv-name{opacity:.3}
+.level-card.completed{border-color:#44aa66}
+.level-card.completed::before{content:'★';position:absolute;top:2px;right:4px;font-size:10px;color:#44ff88}
+.level-card.boss-card{border-color:#ff4444;background:#1a0a0a}
+.level-card.boss-card:hover:not(.locked){border-color:#ff6644;box-shadow:0 0 15px rgba(255,50,50,.3)}
+.menu-row{display:flex;gap:10px;margin-top:10px}
+.menu-btn{font-family:'Press Start 2P',monospace;font-size:12px;color:#c8b0ff;background:transparent;border:2px solid #4a2a8a;padding:10px 28px;cursor:pointer;transition:all .2s;letter-spacing:2px}
+.menu-btn:hover{background:#2a1a5a;border-color:#8a5aff;color:#fff;box-shadow:0 0 20px rgba(120,60,255,.4)}
+.menu-btn.small{font-size:8px;padding:8px 16px}
+.menu-btn.danger{border-color:#6a2a2a;color:#aa6666}
+.menu-btn.danger:hover{border-color:#ff4444;color:#ff6666;background:#2a0a0a}
+#controls-info{margin-top:12px;text-align:center}
+#controls-info p{color:#8a7aaa;font-size:7px;margin:4px 0;letter-spacing:1px}
+.hidden{display:none!important}
+#hud{position:absolute;top:20px;left:50%;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:6px}
+#health-bar{width:400px;height:16px;background:#1a0a2a;border:2px solid #4a2a7a;border-radius:4px;overflow:hidden;box-shadow:0 0 10px rgba(0,0,0,0.8)}
+#health-fill{width:100%;height:100%;background:linear-gradient(90deg,#7b2fff,#b480ff);transition:width .3s;box-shadow:0 0 8px #7b2fff}
+#super-bar{width:400px;height:8px;background:#051020;border:1px solid #1a3a5a;border-radius:2px;overflow:hidden;box-shadow:0 0 10px rgba(0,0,0,0.8)}
+#super-fill{width:0%;height:100%;background:linear-gradient(90deg,#00aaff,#00ffff);transition:width .2s;box-shadow:0 0 6px #00ffff}
+#level-label{font-size:7px;color:#8a7aaa;letter-spacing:1px}
+#area-name{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:16px;color:#c8b0ff;text-shadow:0 0 20px #7b2fff;animation:fadeArea 3s forwards;letter-spacing:4px}
+@keyframes fadeArea{0%{opacity:0;transform:translate(-50%,-50%) scale(.8)}20%{opacity:1;transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0}}
+#pause-screen h2,#death-screen h2{font-size:24px;color:#b480ff;margin-bottom:16px;text-shadow:0 0 20px #7b2fff}
+#death-screen p{color:#6a5a8a;font-size:9px;margin-bottom:20px}
+#pause-screen .menu-btn,#death-screen .menu-btn{margin:4px}
+/* Loading & Cover */
+#loading-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#050212;z-index:100;display:flex;justify-content:center;align-items:center;transition:opacity .8s}
+.loading-content{display:flex;flex-direction:column;align-items:center;text-align:center}
+.loading-content p{color:#b480ff;font-size:10px;margin-bottom:15px;letter-spacing:2px}
+.load-bar{width:300px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin:0 auto}
+.load-fill{width:0%;height:100%;background:linear-gradient(90deg,#7b2fff,#00ffff);animation:load 5.5s forwards linear}
+@keyframes load{0%{width:0%}100%{width:100%}}
+#game-cover{width:400px;height:auto;margin-bottom:30px;border-radius:12px;box-shadow:0 0 50px rgba(123,47,255,.5);border:2px solid rgba(123,47,255,.4);animation:fadeInCover 2s ease-out}
+@keyframes fadeInCover{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+#hud #health-bar{box-shadow:0 0 20px rgba(0,0,0,0.5)}
