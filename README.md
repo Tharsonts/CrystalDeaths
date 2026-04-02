@@ -2,7 +2,7 @@
 
 **Crystal Depths** is a high-octane 2D Metroidvania built from the ground up using **Vanilla JavaScript** and **HTML5 Canvas**. The project emphasizes fluid combat, precise platforming, and a unique procedural audio system.
 
-![Crystal Depths Preview](file:///C:/Users/User/.gemini/antigravity/brain/ac7e28cd-26de-42a3-abdd-bd093f03d702/media__1774457355933.webp)
+![Crystal Depths Preview](69541082-5010-4c0f-ae47-45a790c8105c.png)
 
 ## 🌌 Visão Geral
 
