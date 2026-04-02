@@ -292,6 +292,142 @@ function buildL10(){
     return m;
 }
 
+// ===== L11: Rede Neural (Neural Network - wide open, flowing platforms) =====
+function buildL11(){
+    let m=makeMap(82,30);
+    sR(m,0,0,81,1);sR(m,29,0,81,1);sC(m,0,0,29,1);sC(m,81,0,29,1);
+    fR(m,26,1,28,80,1);
+    for(let c=3;c<79;c+=4)m[1][c]=15;
+
+    for(let c=18;c<=23;c++){m[26][c]=0;m[27][c]=0;m[28][c]=0;}
+    for(let c=40;c<=47;c++){m[26][c]=0;m[27][c]=0;m[28][c]=0;}
+    for(let c=62;c<=66;c++){m[26][c]=0;m[27][c]=0;m[28][c]=0;}
+
+    sR(m,24,3,12,1);sR(m,22,8,18,1);sR(m,20,14,24,1);
+    sR(m,23,20,31,1);sR(m,19,26,35,1);sR(m,16,31,40,1);
+    sR(m,22,36,45,1);sR(m,20,44,54,1);sR(m,17,50,60,1);
+    sR(m,24,49,58,1);sR(m,22,58,69,1);sR(m,18,64,74,1);sR(m,15,71,78,1);
+
+    sC(m,27,14,24,1);sC(m,28,14,24,1);
+    sC(m,55,13,24,1);sC(m,56,13,24,1);
+    sR(m,13,22,28,1);sR(m,11,34,41,1);sR(m,12,47,54,1);sR(m,10,60,67,1);
+
+    [15,16,37,38,57,58,73].forEach(c=>m[25][c]=16);
+    m[23][27]=2;m[22][28]=2;m[19][55]=2;m[18][56]=2;m[14][63]=2;
+    fR(m,2,34,4,39,3);fR(m,2,61,5,67,3);
+    return m;
+}
+
+// ===== L12: Ponte de Dados (Data Bridge - horizontal gauntlet, falling platforms) =====
+function buildL12(){
+    let m=makeMap(92,30);
+    sR(m,0,0,91,1);sR(m,29,0,91,1);sC(m,0,0,29,1);sC(m,91,0,29,1);
+    fR(m,26,1,28,90,1);
+    for(let c=2;c<89;c+=3)m[1][c]=15;
+
+    for(let c=12;c<=19;c++){m[26][c]=0;m[27][c]=0;m[28][c]=0;}
+    for(let c=30;c<=38;c++){m[26][c]=0;m[27][c]=0;m[28][c]=0;}
+    for(let c=49;c<=57;c++){m[26][c]=0;m[27][c]=0;m[28][c]=0;}
+    for(let c=69;c<=76;c++){m[26][c]=0;m[27][c]=0;m[28][c]=0;}
+
+    sR(m,24,3,11,1);sR(m,24,13,18,12);sR(m,24,20,29,1);
+    sR(m,24,31,37,12);sR(m,24,39,48,1);sR(m,24,50,56,12);
+    sR(m,24,58,68,1);sR(m,24,70,75,12);sR(m,24,77,88,1);
+
+    sR(m,19,8,16,1);sR(m,17,18,27,1);sR(m,19,33,42,1);
+    sR(m,17,46,55,1);sR(m,15,58,67,1);sR(m,17,73,82,1);
+    sR(m,12,24,34,1);sR(m,10,39,49,1);sR(m,8,56,66,1);sR(m,11,72,80,1);
+
+    sC(m,44,8,24,1);sC(m,45,8,24,1);fR(m,18,44,21,45,0);
+    m[23][0]=13;m[19][0]=13;m[15][91]=13;m[11][91]=13;
+    m[25][25]=16;m[25][60]=16;m[25][84]=16;
+    m[23][41]=2;m[22][46]=2;m[16][62]=2;m[9][63]=2;
+    return m;
+}
+
+// ===== L13: Núcleo Firewall (Firewall Core - vertical ascent with pillars) =====
+function buildL13(){
+    let m=makeMap(72,40);
+    sR(m,0,0,71,1);sR(m,39,0,71,1);sC(m,0,0,39,1);sC(m,71,0,39,1);
+    fR(m,34,1,38,70,1);
+    for(let c=2;c<69;c+=3)m[1][c]=15;
+
+    sC(m,22,10,33,1);sC(m,23,10,33,1);
+    sC(m,48,8,33,1);sC(m,49,8,33,1);
+    fR(m,23,22,26,23,0);fR(m,18,48,21,49,0);
+
+    sR(m,32,3,17,1);sR(m,29,8,18,1);sR(m,26,12,20,1);sR(m,23,5,14,1);
+    sR(m,31,26,38,1);sR(m,28,30,40,1);sR(m,24,34,44,1);sR(m,20,28,37,1);
+    sR(m,31,51,67,1);sR(m,27,54,66,1);sR(m,23,58,68,1);sR(m,18,52,60,1);
+
+    sR(m,16,8,18,1);sR(m,13,14,24,1);sR(m,10,22,32,1);
+    sR(m,14,33,42,1);sR(m,11,40,50,1);sR(m,8,52,64,1);sR(m,6,60,68,1);
+
+    m[33][24]=16;m[33][47]=16;m[30][57]=16;
+    m[31][12]=2;m[25][23]=2;m[21][49]=2;m[9][63]=2;
+    return m;
+}
+
+// ===== L14: Corredor Neon (Neon Corridor - fast-paced gauntlet) =====
+function buildL14(){
+    let m=makeMap(96,32);
+    sR(m,0,0,95,1);sR(m,31,0,95,1);sC(m,0,0,31,1);sC(m,95,0,31,1);
+    fR(m,27,1,30,94,1);
+    for(let c=2;c<94;c+=2)m[1][c]=15;
+
+    sC(m,20,0,18,1);sC(m,43,0,15,1);sC(m,68,0,18,1);
+    for(let c=10;c<=18;c++){m[27][c]=0;m[28][c]=0;m[29][c]=0;m[30][c]=0;}
+    for(let c=45;c<=56;c++){m[27][c]=0;m[28][c]=0;m[29][c]=0;m[30][c]=0;}
+    for(let c=74;c<=81;c++){m[27][c]=0;m[28][c]=0;m[29][c]=0;m[30][c]=0;}
+
+    sR(m,25,3,9,1);sR(m,23,12,18,1);sR(m,21,16,24,1);
+    sR(m,24,22,34,1);sR(m,20,28,40,1);sR(m,17,34,46,1);
+    sR(m,25,38,44,1);sR(m,24,47,52,12);sR(m,22,53,61,1);
+    sR(m,18,58,67,1);sR(m,15,64,73,1);sR(m,24,70,73,12);
+    sR(m,24,82,92,1);sR(m,18,84,92,1);sR(m,14,86,92,1);
+
+    m[26][26]=16;m[26][27]=16;m[26][60]=16;m[26][88]=16;
+    m[26][30]=14;m[26][31]=14;m[26][64]=14;m[26][65]=14;m[26][89]=14;
+    m[24][20]=13;m[20][20]=13;m[23][68]=13;
+    m[24][15]=2;m[20][35]=2;m[16][65]=2;m[13][88]=2;
+    return m;
+}
+
+// ===== L15: Trono das Areias BOSS (Two-phase boss arena) =====
+function buildL15(){
+    let m=makeMap(60,24);
+    sR(m,0,0,59,1);sR(m,23,0,59,1);sC(m,0,0,23,1);sC(m,59,0,23,1);
+    fR(m,21,1,22,58,1);
+
+    // Side dunes and entry ridges
+    fR(m,19,1,20,11,1);sR(m,18,3,13,1);sR(m,16,8,18,1);
+    fR(m,19,48,20,58,1);sR(m,18,46,56,1);sR(m,16,41,51,1);
+
+    // Broken ruins around the center
+    sR(m,18,23,36,1);
+    sR(m,14,18,26,1);sR(m,14,33,41,1);
+    sR(m,10,25,34,1);
+    sR(m,7,12,18,1);sR(m,7,41,47,1);
+
+    // Sandstone pillars framing the throne basin
+    sC(m,15,12,20,1);sC(m,44,12,20,1);
+    m[16][15]=0;m[17][15]=0;
+    m[16][44]=0;m[17][44]=0;
+
+    // Hazard cacti that hurt on touch
+    [13,14,28,31,45,46].forEach(c=>m[20][c]=16);
+    [21,38].forEach(c=>m[13][c]=16);
+
+    // Desert glow and buried ruin details
+    fR(m,1,1,6,58,6);
+    sR(m,22,12,17,3);sR(m,22,42,47,3);
+    sR(m,4,26,33,3);
+
+    // Decorative desert cacti
+    m[20][6]=2;m[20][53]=2;m[17][10]=2;m[17][49]=2;m[9][29]=2;
+    return m;
+}
+
 // ===== LEVEL DEFINITIONS =====
 // exit: {col,row} position of the exit portal (player presses UP to enter)
 const LEVELS = [
@@ -324,5 +460,21 @@ const LEVELS = [
      traps:{falling:[[17,18,3],[21,18,3],[25,18,3],[45,16,3]],timed:[[32,19],[33,19],[36,19],[37,19],[54,19],[55,19],[57,19],[58,19]],arrows:[[30,17,1]]},runes:[[4,15], [35,15], [59,13]],boss:false},
     {name:'Senhor das Sombras',build:buildL10,spawn:{x:3*T,y:14*T},
      enemies:[{type:'boss2',x:20*T,y:2*T}],
-     traps:{falling:[],timed:[],arrows:[]},runes:[],boss:true}
+     traps:{falling:[],timed:[],arrows:[]},runes:[],boss:true},
+    {name:'Dunas Perdidas',build:buildL11,spawn:{x:3*T,y:22*T},exit:{col:76,row:14},
+     enemies:[{type:'crawler',x:16*T,y:2*T,p:6},{type:'crawler',x:50*T,y:2*T,p:6},{type:'bat',x:24*T,y:14*T},{type:'bat',x:58*T,y:10*T},{type:'golem',x:70*T,y:2*T}],
+     traps:{falling:[],timed:[[27,25],[55,25]],arrows:[]},runes:[[12,20],[40,14],[71,10]],boss:false},
+    {name:'Ponte de Areia',build:buildL12,spawn:{x:3*T,y:20*T},exit:{col:86,row:13},
+     enemies:[{type:'crawler',x:18*T,y:2*T,p:5},{type:'crawler',x:52*T,y:2*T,p:5},{type:'bat',x:26*T,y:14*T},{type:'bat',x:60*T,y:10*T},{type:'bat',x:78*T,y:12*T},{type:'golem',x:84*T,y:2*T}],
+     traps:{falling:[[13,24,6],[31,24,7],[50,24,7],[70,24,6]],timed:[[25,26],[60,26],[84,26]],arrows:[[0,23,1],[0,19,1],[91,15,-1]]},runes:[[16,18],[50,13],[82,9]],boss:false},
+    {name:'Templo Soterrado',build:buildL13,spawn:{x:3*T,y:30*T},exit:{col:66,row:5},
+     enemies:[{type:'crawler',x:12*T,y:2*T,p:5},{type:'golem',x:26*T,y:2*T},{type:'bat',x:18*T,y:23*T},{type:'bat',x:42*T,y:18*T},{type:'bat',x:58*T,y:10*T},{type:'golem',x:56*T,y:2*T},{type:'crawler',x:36*T,y:2*T,p:6}],
+     traps:{falling:[],timed:[[24,33],[47,33],[57,30]],arrows:[[0,28,1],[0,22,1],[71,20,-1],[71,12,-1]]},runes:[[10,29],[34,18],[60,8]],boss:false},
+    {name:'Corredor das Ruinas',build:buildL14,spawn:{x:2*T,y:22*T},exit:{col:90,row:13},
+ enemies:[{type:'bat',x:14*T,y:16*T},{type:'bat',x:38*T,y:13*T},{type:'bat',x:66*T,y:15*T},{type:'crawler',x:26*T,y:2*T,p:5},{type:'golem',x:60*T,y:2*T},{type:'crawler',x:86*T,y:2*T,p:6}],
+ traps:{falling:[[47,24,6],[70,24,4]],timed:[[30,26],[31,26],[64,26],[65,26],[89,26]],arrows:[[20,24,1],[20,20,1],[68,23,1]]},runes:[[12,17],[52,12],[84,9]],boss:false},
+{name:'Trono das Areias',build:buildL15,spawn:{x:3*T,y:17*T},
+ enemies:[{type:'boss3',x:29*T,y:4*T}],
+ traps:{falling:[],timed:[],arrows:[]},runes:[],boss:true}
 ];
+

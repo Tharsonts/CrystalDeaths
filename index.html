@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crystal Depths - Metroidvania</title>
-    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
     <div id="game-container">
@@ -27,20 +30,51 @@
             </div>
             <div id="controls-info" class="hidden">
                 <p>← → : Mover  |  ↑/ESPAÇO : Pular</p>
-                <p>Z : Atacar  |  X/SHIFT : Dash</p>
-                <p>ESC : Menu</p>
+                <p>Z/🖱ESQ : Atacar  |  X/SHIFT : Dash</p>
+                <p>E : Especial (Boss)  |  ESC : Menu</p>
+            </div>
+            <div id="keybind-panel" class="hidden">
+                <h3 style="color:#b480ff;margin:0 0 10px;font-family:'Press Start 2P',monospace;font-size:12px;">CONFIGURAR TECLAS</h3>
+                <p style="color:#8a7aaa;font-size:9px;margin-bottom:8px;">Clique no botão e pressione a nova tecla</p>
+                <div id="keybind-grid"></div>
+                <div style="margin-top:10px;display:flex;gap:8px;justify-content:center;">
+                    <button id="btn-keybind-reset" class="menu-btn small" style="font-size:8px;">RESTAURAR PADRÃO</button>
+                    <button id="btn-keybind-close" class="menu-btn small" style="font-size:8px;">FECHAR</button>
+                </div>
             </div>
         </div>
         <div id="hud" class="hidden">
-            <div style="display:flex;flex-direction:column;gap:4px;">
-                <div id="health-bar"><div id="health-fill"></div></div>
-                <div id="super-bar" class="hidden"><div id="super-fill"></div></div>
+            <div id="hud-top">
+                <div id="hud-left">
+                    <div id="health-label">NEXO VITAL</div>
+                    <div id="health-mask-row"></div>
+                    <div id="super-bar" class="hidden">
+                        <div id="super-shell">
+                            <div id="super-fill"></div>
+                        </div>
+                        <div id="super-meta">
+                            <div id="super-title">RUPTURA</div>
+                            <div id="super-hint">Colete energia no combate</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="hud-center">
+                    <div id="level-label"></div>
+                </div>
             </div>
-            <div id="level-label"></div>
-            <div id="area-name" class="hidden"></div>
+            <div id="boss-hud" class="hidden">
+                <div id="boss-icon" data-icon="default"></div>
+                <div id="boss-meta">
+                    <div id="boss-name"></div>
+                    <div id="boss-bar"><div id="boss-fill"></div></div>
+                </div>
+            </div>
         </div>
-        <div id="rune-ui" class="hidden" style="position:absolute; top:20px; right:20px; font-family:sans-serif; font-size:24px; font-weight:bold; color:#00ffff; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; z-index:10; display:flex; align-items:center; gap:8px;">
-            <div style="width:20px;height:20px;background:#00ffff;transform:rotate(45deg);border:2px solid #fff;box-shadow:0 0 10px #00ffff;"></div>
+        <div id="area-intro" class="hidden">
+            <div id="area-name"></div>
+        </div>
+        <div id="rune-ui" class="hidden">
+            <div id="rune-icon"></div>
             <span id="rune-count">0 / 3</span>
         </div>
         <div id="pause-screen" class="hidden">
@@ -55,9 +89,14 @@
             <button id="btn-quit2" class="menu-btn small">MENU</button>
         </div>
     </div>
-    <script src="engine.js"></script>
-    <script src="maps.js"></script>
-    <script src="entities.js"></script>
-    <script src="game.js"></script>
+    <script>
+    // Force fresh file loading - no cache
+    ['engine.js','maps.js','entities.js','game.js'].forEach(f=>{
+        let s=document.createElement('script');
+        s.src=f+'?t='+Date.now();
+        s.async=false;
+        document.body.appendChild(s);
+    });
+    </script>
 </body>
 </html>
